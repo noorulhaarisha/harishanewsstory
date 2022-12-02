@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HackerStories</string>
+    <string name="search_stories">Search Stories</string>
+    <string name="connect_internet">Please connect to the internet</string>
+</resources>
