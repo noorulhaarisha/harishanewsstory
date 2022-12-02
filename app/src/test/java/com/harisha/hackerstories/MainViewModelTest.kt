@@ -50,10 +50,10 @@ class MainViewModelTest {
     fun getAllMoviesTest() {
         runBlocking {
             Mockito.`when`(mainRepository.getAllStories())
-                .thenReturn(NetworkState.Success(listOf<Stories>(Stories("movie", "", "new"))))
+                .thenReturn(NetworkState.Success(listOf<Stories>(Stories("Story", "", "new"))))
             mainViewModel.getAllStories()
             val result = mainViewModel.storiesList.getOrAwaitValue()
-            assertEquals(listOf<Stories>(Stories("movie", "", "new")), result)
+            assertEquals(listOf<Stories>(Stories("Story", "", "new")), result)
         }
     }
 
