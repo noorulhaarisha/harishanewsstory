@@ -39,9 +39,7 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
 
         binding.refresh.setOnRefreshListener {
             viewModel.deleteAllStories()
-            println("Delete refresh---")
             getStoriesFromApi()
-            println("GOt stories from api")
 
         }
 
@@ -51,24 +49,10 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
         getStoriesFromApi()
 
         viewModel.storiesList.observe(this) {
-
-               // viewModel.deleteAllStories()
-                insertDataToDatabase(it) // save data in local
-                println("insert data 1")
-
-                displayStoriesFromLocal() //Display data from local
-                println("display stories 1")
-
-            /*else{
                 viewModel.deleteAllStories()
-                println("Delete 2")
                 insertDataToDatabase(it) // save data in local
-                println("insert data 2")
                 displayStoriesFromLocal() //Display data from local
-                println("display stories 2")
 
-
-            }*/
         }
 
         viewModel.errorMessage.observe(this) {
@@ -117,7 +101,6 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
 
         try {
             for (pos in storyList.indices) {
-                println("inserting...")
                 var story = storyList[pos]
                 val storySave = StoryEntity(
                     0, story.by, story.descendants, story.id, 0,
@@ -139,9 +122,7 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
         try {
             viewModel.readAllStories.observe(this, Observer { storyList ->
                 val storyListData = ArrayList<Stories>()
-                println("story size after delete --> "+storyListData.size)
                 for (pos in storyList.indices) {
-                    println("displaying...")
 
                     val story = storyList[pos]
                     storyListData
@@ -157,7 +138,6 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
             })
         } catch(e: Exception){
             println("Insert exception ${e.message}")
-
         }
         binding.refresh.isRefreshing = false
 
