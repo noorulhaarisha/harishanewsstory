@@ -1,19 +1,19 @@
-#Hacker News Story Application
+# Hacker News Story Application
 
 Application is developed in kotlin language.
 
-######Installation
+###### Installation
 Clone this repository and import into Android Studio
 
 git clone https://github.com/noorulhaarisha/harishanewsstory.git
 
-######Project structure:
+###### Project structure:
 Structure used MVVM Architecture.
 
-######Gradle configuration:
+###### Gradle configuration:
 minSdkVersion 24
 
-######Libraries:
+###### Libraries:
 Retrofit
 Coroutine
 Room
