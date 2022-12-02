@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
         search_layout.setOnQueryTextListener(this)
 
         binding.refresh.setOnRefreshListener {
-            viewModel.deleteAllStories()
             getStoriesFromApi()
 
         }
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
         getStoriesFromApi()
 
         viewModel.storiesList.observe(this) {
-                viewModel.deleteAllStories()
+              //  viewModel.deleteAllStories()
                 insertDataToDatabase(it) // save data in local
                 displayStoriesFromLocal() //Display data from local
 
@@ -85,8 +84,10 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
     }
 
     private fun getStoriesFromApi(){
-        if(ValidationUtil.checkForInternet(this))
+        if(ValidationUtil.checkForInternet(this)) {
+            viewModel.deleteAllStories()
             viewModel.getAllStories()
+        }
         else {
             displayStoriesFromLocal()
             Toast.makeText(this, resources.getText(R.string.connect_internet),
